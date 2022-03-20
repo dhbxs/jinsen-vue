@@ -20,7 +20,7 @@ Vue.use(Submenu);
 Vue.use(MenuItem);
 Vue.use(MenuItemGroup);
 
-import router from './router/';
+import router from './router';
 
 Vue.config.productionTip = false;
 

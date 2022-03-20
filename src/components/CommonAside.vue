@@ -176,6 +176,29 @@ export default {
   data() {
     return {
       isCollapse: false,
+      menu: [
+        {
+          path: "/",
+          name: "home",
+          label: "首页",
+          icon: "s-home",
+          url: "Home/Home",
+        },
+        {
+          path: "/FellingLicenseManage", 
+          name: "FellingLicenseManage",
+          label: "采伐证管理系统",
+          icon: "office-building",
+          url: "FellingLicenseManage/FellingLicenseManage",
+        },
+        {
+          path: "/ProductionManage", 
+          name: "ProductionManage",
+          label: "生产管理系统",
+          icon: "postcard",
+          url: "ProductionManage/ProductionManage",
+        },
+      ],
     };
   },
   methods: {
@@ -184,6 +207,11 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+  },
+  computed: {
+    noChildren() {
+      return this.menue.filter((item) => !item.children);
     },
   },
 };
