@@ -8,13 +8,12 @@
 
 export default {
   name: 'App',
-  components: {
-  }
+  components: {}
 }
 </script>
 
-<style>
+<style scoped>
 #app {
-  height: 100%;
+  height: 100vh;
 }
 </style>
