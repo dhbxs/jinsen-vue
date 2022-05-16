@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 import VueRouter from "vue-router";
-import Home from "@/views/Home.vue";
+import Main from "@/views/Main.vue";
 // import BillEntry from "@/components/BillEntry.vue";
 // import BillReview from "@/components/BillReview.vue";
 // import BillPrint from "@/components/BillPrint.vue";
@@ -10,31 +10,65 @@ Vue.use(VueRouter);
 
 const routes = [
     {
-        path: "/",
-        name: "首页",
-        component: Home
+        path: "/main",
+        name: "main",
+        component: Main,
+        children : [
+            {
+                path: '/home',
+                name: 'home',
+                // 按需引入
+                component: () => import('@/views/Home')
+            },
+            {
+                path: '/user',
+                name: 'user',
+                component: () => import('@/views/User')
+            },
+            {
+                path: '/wild-entry',
+                name: 'wild-entry',
+                component: () => import('@/views/AI-Check-Size/wild-entry')
+            },
+            {
+                path: '/wild-print',
+                name: 'wild-print',
+                component: () => import('@/views/AI-Check-Size/wild-print')
+            },
+            {
+                path: '/wild-review',
+                name: 'wild-review',
+                component: () => import('@/views/AI-Check-Size/wild-review')
+            },
+            {
+                path: '/photo-review',
+                name: 'photo-review',
+                component: () => import('@/views/Info-Center/photo-review')
+            },
+            {
+                path: '/user-setting',
+                name: 'user-setting',
+                component: () => import('@/views/System-Setting/user-setting')
+            }
+        ]
     },
-    // {
-    //     path: "/IntelligentRuler",
-    //     name: "智能检尺",
-    //     children: [
-    //         {
-    //             path: "/BillEntry",
-    //             name: "野账录入",
-    //             component: BillEntry
-    //         },
-    //         {
-    //             path: "/BillReview",
-    //             name: "野账审核",
-    //             component: BillReview
-    //         },
-    //         {
-    //             path: "/BillPrint",
-    //             name: "野账打印",
-    //             component: BillPrint
-    //         }
-    //     ]
-    // },
+    {
+        path: '/',
+        name: 'login',
+        component: () => import('@/views/Login/login'),
+        children: [
+            {
+                path: '/',
+                name: 'login-info',
+                component: () => import('@/views/Login/login-info')
+            },
+            {
+                path: '/sign-up-info',
+                name: 'sign-up-info',
+                component: () => import('@/views/Login/sign-up-info')
+            }
+        ]
+    }
 ]
 
 

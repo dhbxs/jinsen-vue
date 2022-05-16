@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from '@/App.vue';
 import store from '@/store';
 import router from '@/router';
-
+import http from 'axios';
 
 // 引入完整的ElementUI组件库
 // import ElementUI from 'element-ui';
@@ -12,7 +12,32 @@ import router from '@/router';
 // Vue.use(ElementUI);
 
 // 按需引入ElementUI
-import { Button, Container, Main, Header, Aside, Menu, Submenu,MenuItem,MenuItemGroup, Dropdown, DropdownMenu, DropdownItem} from 'element-ui';
+import {
+    Button,
+    Container,
+    Main,
+    Header,
+    Aside,
+    Menu,
+    Submenu,
+    MenuItem,
+    MenuItemGroup,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Row,
+    Col,
+    Card,
+    Form,
+    FormItem,
+    Input,
+    Select,
+    Option,
+    Switch,
+    DatePicker,
+    Upload,
+} from 'element-ui';
+
 Vue.use(Button);
 Vue.use(Container);
 Vue.use(Main);
@@ -25,13 +50,27 @@ Vue.use(MenuItemGroup);
 Vue.use(Dropdown);
 Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
+Vue.use(Row);
+Vue.use(Col);
+Vue.use(Card);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Input);
+Vue.use(Select);
+Vue.use(Option);
+Vue.use(Switch);
+Vue.use(DatePicker);
+Vue.use(Upload);
+
+// 绑定在Vue prototype 属性上，供以后调用
+Vue.prototype.$http = http;
 
 import "@/assets/css/global.css";
 
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App),
+    router,
+    store,
+    render: h => h(App),
 }).$mount('#app')
