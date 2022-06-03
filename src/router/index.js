@@ -13,7 +13,7 @@ const routes = [
         path: "/main",
         name: "main",
         component: Main,
-        children : [
+        children: [
             {
                 path: '/home',
                 name: 'home',
@@ -21,14 +21,14 @@ const routes = [
                 component: () => import('@/views/Home')
             },
             {
-                path: '/user',
-                name: 'user',
-                component: () => import('@/views/User')
-            },
-            {
                 path: '/wild-entry',
                 name: 'wild-entry',
                 component: () => import('@/views/AI-Check-Size/wild-entry')
+            },
+            {
+                path: '/wild-entry-after',
+                name: 'wild-entry-after',
+                component: () => import('@/views/AI-Check-Size/wild-entry-after')
             },
             {
                 path: '/wild-print',
@@ -41,6 +41,16 @@ const routes = [
                 component: () => import('@/views/AI-Check-Size/wild-review')
             },
             {
+                path: '/wild-modify',
+                name: 'wild-modify',
+                component: () => import('@/views/AI-Check-Size/wild-modify')
+            },
+            {
+                path: '/wild-add',
+                name: 'wild-add',
+                component: () => import('@/views/AI-Check-Size/wild-add')
+            },
+            {
                 path: '/photo-review',
                 name: 'photo-review',
                 component: () => import('@/views/Info-Center/photo-review')
@@ -49,12 +59,16 @@ const routes = [
                 path: '/user-setting',
                 name: 'user-setting',
                 component: () => import('@/views/System-Setting/user-setting')
+            },
+            {
+                path: '/modify-user',
+                name: 'modify-user',
+                component: () => import('@/views/System-Setting/modify-user')
             }
         ]
     },
     {
         path: '/',
-        name: 'login',
         component: () => import('@/views/Login/login'),
         children: [
             {
@@ -63,7 +77,7 @@ const routes = [
                 component: () => import('@/views/Login/login-info')
             },
             {
-                path: '/sign-up-info',
+                path: 'sign-up-info',
                 name: 'sign-up-info',
                 component: () => import('@/views/Login/sign-up-info')
             }

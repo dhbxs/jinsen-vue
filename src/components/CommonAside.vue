@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     clickMenu(item){
-      console.log(item.name);
+      // console.log(item.name);
       this.$router.push({
         name: item.name,
       })
@@ -104,11 +104,11 @@ export default {
       return this.$store.state.tab.isCollapse;
     },
     noChildren() {
-      console.log(this.menu.filter(item => !item.children));
+      // console.log(this.menu.filter(item => !item.children));
       return this.menu.filter(item => !item.children);
     },
     hasChildren() {
-      console.log(this.menu.filter(item => item.children));
+      // console.log(this.menu.filter(item => item.children));
       return this.menu.filter(item => item.children);
     }
   },

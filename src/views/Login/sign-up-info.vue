@@ -2,24 +2,24 @@
   <div class="box signup">
     <div class="form-content">
       <div class="avtar">
-        <div class="pic"><img src="@/assets/img/2.jpg" alt="" /></div>
+        <div class="pic"><img src="@/assets/img/2.jpg" alt=""/></div>
       </div>
       <h1>Let's get started</h1>
-      <form action="#" class="form">
+      <form class="form">
         <div>
           <i class="fa fa-user-o"></i>
-          <input type="text" placeholder="username" />
+          <input type="text" placeholder="username" v-model="user.username"/>
         </div>
         <div>
           <i class="fa fa-envelope-o"></i>
-          <input type="email" placeholder="email" />
+          <input type="email" placeholder="email" v-model="user.email"/>
         </div>
         <div>
           <i class="fa fa-key"></i>
-          <input type="password" placeholder="password" />
+          <input type="password" placeholder="password" v-model="user.password"/>
         </div>
         <div class="btn">
-          <button>signup</button>
+          <button @click="register">signup</button>
         </div>
       </form>
       <p class="tips">
@@ -30,12 +30,35 @@
 </template>
 
 <script>
+import {userRigister} from "@/http/api/user";
+
 export default {
   name: "sign-up-info",
+  data() {
+    return {
+      user: {
+        username: '',
+        email: '',
+        password: ''
+      }
+    }
+  },
   methods: {
     toLogin() {
       this.$router.push({
         name: 'login-info'
+      })
+    },
+    register() {
+      const self = this;
+      userRigister(this.user).then(res => {
+        console.log(res);
+        if (res.state === 200) {
+          self.$message.success("注册成功");
+          self.$router.push("/");
+        } else if(res.state !== 200) {
+          this.$message.error("注册失败 " + res.message);
+        }
       })
     }
   }
